@@ -1,14 +1,21 @@
 import { StyleSheet } from 'react-native';
+import { Image } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
+
+
+
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <Text style={styles.title}>Welcome to My App</Text>
+      <Image
+        source={require('../../assets/images/MADI.png')} // Adjust if your image path is different
+        style={styles.image}
+      />
+      <Text style={styles.name}>Hi, I'm Chimadi Ogakwu</Text>
     </View>
   );
 }
@@ -18,14 +25,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 20,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  image: {
+    width: 150,
+    height: 200,
+    borderRadius: 75,
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 18,
   },
 });

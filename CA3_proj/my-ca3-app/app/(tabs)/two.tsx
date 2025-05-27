@@ -1,14 +1,48 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Button, TextInput } from 'react-native';
+import React, { useState } from 'react';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 export default function TabTwoScreen() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
+  const [submittedEmail, setSubmittedEmail] = useState('');
+
+  const handleUpdate = () => {
+    setSubmittedName(name);
+    setSubmittedEmail(email);
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <Text style={styles.title}>My Profile</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your full name"
+        value={name}
+        onChangeText={setName}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your email address"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+
+      <Button title="Update Profile" onPress={handleUpdate} />
+
+      {submittedName || submittedEmail ? (
+        <View style={styles.output}>
+          <Text style={styles.resultTitle}>Updated Info:</Text>
+          <Text style={styles.resultText}>Name: {submittedName}</Text>
+          <Text style={styles.resultText}>Email: {submittedEmail}</Text>
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -16,16 +50,35 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    padding: 20,
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
+    fontSize: 28,
     fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  input: {
+    borderWidth: 1,
+    borderColor: '#aaa',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 15,
+  },
+  output: {
+    marginTop: 20,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+  },
+  resultTitle: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  resultText: {
+    fontSize: 16,
+    marginTop: 5,
   },
 });
+ 
