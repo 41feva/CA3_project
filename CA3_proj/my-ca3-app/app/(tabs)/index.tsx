@@ -12,7 +12,7 @@ export default function TabOneScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to My App</Text>
       <Image
-        source={require('../../assets/images/MADI.png')} // Adjust if your image path is different
+        source={require('../../assets/images/Cool.jpg')} // Adjust if your image path is different
         style={styles.image}
       />
       <Text style={styles.name}>Hi, I'm Chimadi Ogakwu</Text>

@@ -10,10 +10,10 @@ export default function TabTwoScreen() {
   const [submittedName, setSubmittedName] = useState('');
   const [submittedEmail, setSubmittedEmail] = useState('');
 
-  const handleUpdate = () => {
+  function handleUpdate() {
     setSubmittedName(name);
     setSubmittedEmail(email);
-  };
+  }
 
   return (
     <View style={styles.container}>

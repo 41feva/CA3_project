@@ -1,14 +1,23 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import { StyleSheet, View } from 'react-native';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+const INITIAL_REGION = {
+  latitude: 6.4878674,
+  longitude: 3.85332,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
+};
 
 export default function TabFiveScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Map</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/five.tsx" />
+      <MapView style={styles.map} 
+      initialRegion={INITIAL_REGION}
+      showsMyLocationButton
+      showsUserLocation
+      provider={PROVIDER_GOOGLE}
+      />
     </View>
   );
 }
@@ -16,16 +25,9 @@ export default function TabFiveScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  map: {
+    width: '100%',
+    height: '100%',
   },
 });
