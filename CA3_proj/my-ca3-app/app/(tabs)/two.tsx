@@ -1,4 +1,4 @@
-import { StyleSheet, Button, TextInput } from 'react-native';
+import { StyleSheet, Button, TextInput, Image } from 'react-native';
 import React, { useState } from 'react';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
@@ -6,19 +6,23 @@ import { Text, View } from '@/components/Themed';
 
 export default function TabTwoScreen() {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
   const [submittedName, setSubmittedName] = useState('');
-  const [submittedEmail, setSubmittedEmail] = useState('');
+  const [submittedAge, setSubmittedAge] = useState('');
 
   function handleUpdate() {
     setSubmittedName(name);
-    setSubmittedEmail(email);
+    setSubmittedAge(age);
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Profile</Text>
-
+      <Image source={require('../../assets/images/Suitguy.jpg')}
+      style={styles.image} />
+         
+              
+    
       <TextInput
         style={styles.input}
         placeholder="Enter your full name"
@@ -28,19 +32,19 @@ export default function TabTwoScreen() {
 
       <TextInput
         style={styles.input}
-        placeholder="Enter your email address"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
+        placeholder="Enter your age"
+        value={age}
+        onChangeText={setAge}
+        keyboardType="numeric"
       />
 
       <Button title="Update Profile" onPress={handleUpdate} />
 
-      {submittedName || submittedEmail ? (
+      {submittedName || submittedAge ? (
         <View style={styles.output}>
           <Text style={styles.resultTitle}>Updated Info:</Text>
           <Text style={styles.resultText}>Name: {submittedName}</Text>
-          <Text style={styles.resultText}>Email: {submittedEmail}</Text>
+          <Text style={styles.resultText}>Age: {submittedAge}</Text>
         </View>
       ) : null}
     </View>
@@ -79,6 +83,13 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 16,
     marginTop: 5,
+  },
+  image: {
+    width: 150,
+    height: 200,
+    borderRadius: 75,
+    marginBottom: 20,
+    alignSelf: 'center',
   },
 });
  
